@@ -6,6 +6,9 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    /* to avoid not having to initialize propertys so it will compile*/
+    "strictPropertyInitialization": false, 
+    
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
