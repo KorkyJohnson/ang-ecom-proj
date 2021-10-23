@@ -9,8 +9,10 @@ import { map } from 'rxjs/operators';
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/products';
+  // private baseUrl = 'http://localhost:8080/api/products?size=100'; // default is 20, forcing size to be 100
 
+  private baseUrl = 'http://localhost:8080/api/products';
+  
   constructor(private httpClient: HttpClient) { }
 
   getProductList(): Observable<Product[]> {
