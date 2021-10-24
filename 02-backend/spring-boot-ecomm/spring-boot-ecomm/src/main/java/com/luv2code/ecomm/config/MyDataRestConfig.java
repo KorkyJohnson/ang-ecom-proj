@@ -54,19 +54,29 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     private void exposeIds(RepositoryRestConfiguration config) {
         // expose entity Ids
 
+        // ***NOTE***
+        // 
+        // The <?> beside the Class/EntityType classes are there to get rid of the 
+        // 'Classes must be paramaterized' warnings since they are 'raw classes'
+        // they aren't necessary
+        // 
+        // explanation here: https://stackoverflow.com/questions/20451096/why-am-i-getting-the-warning-class-is-a-raw-type-references-to-generic-type-cl/20451127
+        // 
+        // ***NOTE***
+
         // - get a list of all classes from the entity manager
         Set<EntityType<?>> entities = entityManager.getMetamodel().getEntities();
 
         // - create a array of the entity types
-        List<Class> entityClasses = new ArrayList<>();
+        List<Class<?>> entityClasses = new ArrayList<>();
 
         // - get the entity types for the entities
-        for (EntityType tempEntityType : entities) {
+        for (EntityType<?> tempEntityType : entities) {
             entityClasses.add(tempEntityType.getJavaType());
         }
 
         // - expose the entity ids for the array of entity/domain types
-        Class[] domainTypes = entityClasses.toArray(new Class[0]);
+        Class<?>[] domainTypes = entityClasses.toArray(new Class[0]);
         config.exposeIdsFor(domainTypes);
     }
 

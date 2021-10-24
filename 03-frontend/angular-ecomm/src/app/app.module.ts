@@ -12,7 +12,7 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 // Order of routes is important (top --> down checking)
 
 const routes: Routes = [
-  {path: 'category/:id', component: ProductListComponent},
+  {path: 'category/:id/:name', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
