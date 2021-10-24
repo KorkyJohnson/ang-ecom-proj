@@ -25,4 +25,7 @@ public interface iProductRepository extends JpaRepository<Product, Long>{
 
     // findBy is a Query Method based (in this case) on the 'id' parameter
     Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
+
+    // for the search bar at the top to findBy name
+    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
 }
