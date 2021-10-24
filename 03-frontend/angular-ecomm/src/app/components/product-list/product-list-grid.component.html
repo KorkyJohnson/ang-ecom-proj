@@ -1,8 +1,10 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
 
+    <!-- Suppress for now
     <h4>Category: {{ currentCategoryName }}</h4>
     <hr>
+    -->
 
     <div class="container-fluid">
       <div class="row">
@@ -14,9 +16,18 @@
                 <img src="{{ tempProduct.imageUrl }}" class="image-responsive">
                 <h1>{{ tempProduct.name}}</h1>
                 <div class="price">{{ tempProduct.unitPrice | currency:'USD'}}</div>
+
                 <a href="#" class="primary-btn">Add to cart</a>
-        
-        </div>      
+              </div>
+        </div>  
+        <!-- 
+          if no products found or returns empty diplay a message
+          the ? beside products means check to see if product is null or undefined 
+        -->
+        <div *ngIf="products?.length == 0" class="alert alert-warning" role="alert">
+          No Products Found
+        </div> 
+
       </div>
     </div>
   </div>
